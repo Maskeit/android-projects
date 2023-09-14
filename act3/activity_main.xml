@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:inputType="numberDecimal|numberSigned"
+    android:id="@+id/numero_uno"
+    android:hint="Número Uno" /><!--Acepta decimales negativos-->
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:inputType="numberDecimal|numberSigned"
+    android:id="@+id/numero_dos"
+    android:layout_below="@id/numero_uno"
+    android:hint="Número Dos" /><!--Acepta decimales negativos-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lineabotones"
+        android:layout_below="@id/numero_dos"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="22sp"
+            android:id="@+id/sumar"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="22sp"
+            android:id="@+id/restar"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textSize="22sp"
+            android:id="@+id/multiplicar"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="22sp"
+            android:id="@+id/dividir"/>
+    </LinearLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lineabotones"
+        android:id="@+id/custom">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="CE"
+            android:textSize="22sp"
+            android:id="@+id/reiniciar"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="^y"
+            android:textSize="22sp"
+            android:id="@+id/exp"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="+/-"
+            android:textSize="22sp"
+            android:id="@+id/signo"/>
+    </TableLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="40sp"
+        android:layout_below="@id/custom"
+        android:id="@+id/resultado"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"/>
+
+
+</RelativeLayout>
