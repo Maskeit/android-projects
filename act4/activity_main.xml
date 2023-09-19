@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal|numberSigned"
         android:id="@+id/numero"
-        android:textSize="28sp"
+        android:textSize="30sp"
         android:hint="0"
         android:layout_below="@id/operacion"
         android:textAlignment="textEnd"/>
@@ -27,29 +27,38 @@
         android:layout_height="wrap_content"
         android:id="@+id/botones0"
         android:layout_below="@id/numero">
+
         <Button
+            android:id="@+id/tborrar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/tborrar"
-            android:text="C"/>
+
+            android:text="C"
+            android:textSize="22sp" />
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tborrartodo"
+            android:textSize="22sp"
+
             android:text="CE"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/traiz"
+            android:textSize="22sp"
+
             android:text="sqrt"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tpotencia"
+            android:textSize="22sp"
+
             android:text="x^y"/>
     </LinearLayout>
     <LinearLayout
@@ -62,24 +71,32 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t7"
+            android:textSize="22sp"
+
             android:text="7"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t8"
+            android:textSize="22sp"
+
             android:text="8"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t9"
+            android:textSize="22sp"
+
             android:text="9"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tdividir"
+            android:textSize="22sp"
+
             android:text="/"/>
     </LinearLayout>
     <LinearLayout
@@ -92,24 +109,32 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t4"
+            android:textSize="22sp"
+
             android:text="4"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t5"
+            android:textSize="22sp"
+
             android:text="5"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t6"
+            android:textSize="22sp"
+
             android:text="6"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tmultiplicar"
+            android:textSize="22sp"
+
             android:text="*"/>
     </LinearLayout>
     <LinearLayout
@@ -122,24 +147,32 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t1"
+            android:textSize="22sp"
+
             android:text="1"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t2"
+            android:textSize="22sp"
+
             android:text="2"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t3"
+            android:textSize="22sp"
+
             android:text="3"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/trestar"
+            android:textSize="22sp"
+
             android:text="-"/>
     </LinearLayout>
     <LinearLayout
@@ -152,24 +185,118 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tpunto"
+            android:textSize="22sp"
+
             android:text="."/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/t0"
+            android:textSize="22sp"
+
             android:text="0"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tigual"
+            android:textSize="22sp"
+
             android:text="="/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/tsumar"
+            android:textSize="22sp"
             android:text="+"/>
     </LinearLayout>
+    <Switch
+        android:id="@+id/switchSci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/botones4"
+        android:text="Mostrar Botones Científicos" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/botonesSci1"
+        android:layout_below="@id/switchSci"
+        android:visibility="gone">
+        <!-- Agrega aquí los botones científicos que deseas mostrar/ocultar -->
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tlog"
+            android:textSize="20sp"
+            android:text="log"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tln"
+            android:textSize="22sp"
+            android:text="ln"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tfact"
+            android:textSize="22sp"
+            android:text="n!"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tinverso"
+            android:textSize="20sp"
+            android:text="1/x"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tabsolute"
+            android:textSize="22sp"
+            android:text="|X|"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/botonesSci2"
+        android:layout_below="@id/botonesSci1"
+        android:visibility="gone">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tsin"
+            android:textSize="22sp"
+            android:text="sin"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tcos"
+            android:textSize="22sp"
+            android:text="cos"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ttan"
+            android:textSize="22sp"
+            android:text="tan"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/texp"
+            android:textSize="22sp"
+            android:text="10^x"/>
+    </LinearLayout>
+
 </RelativeLayout>
