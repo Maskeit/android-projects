@@ -1,5 +1,5 @@
-//package com.maskeit.calculadoraintermedia;
-package com.example.calculadoraintermedia;
+package com.maskeit.calculadoraintermedia;
+//package com.example.calculadoraintermedia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,9 +19,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button sumar, restar, multiplicar, dividir, tigual,
             log, ln,fact,inverso,sen,cos,tan,exp,absoluto,
-            pi,t0,t1,t2,t3,t4,t5,t6,t7,t8,t9, tdiv,
+            pi,t0,t1,t2,t3,t4,t5,t6,t7,t8,t9, tdiv,tmod,
             tpunto,traiz, tpotencia, tborrar, tborrartodo;
     Double op1, op2, PI;
+    Integer opDiv1, opDiv2;
     int operador;
     String primero;
     EditText num;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         t8 = (Button) findViewById(R.id.t8);
         t9 = (Button) findViewById(R.id.t9);
         tdiv = (Button) findViewById(R.id.tdiv);
+        tmod = (Button) findViewById(R.id.tmod);
 //        Button[] buttons = new Button[10]; // Creamos un array de botones para almacenar los botones t0, t1, ..., t9
 //
 //        for (int i = 0; i <= 9; i++) {
@@ -99,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         exp.setOnClickListener(this);
         absoluto.setOnClickListener(this);
         tdiv.setOnClickListener(this);
+        tmod.setOnClickListener(this);
 
         pi.setOnClickListener(this);
         t0.setOnClickListener(this);
@@ -120,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Switch switchMostrarBotones = findViewById(R.id.switchSci);
         LinearLayout botonesSci1 = findViewById(R.id.botonesSci1);
         LinearLayout botonesSci2 = findViewById(R.id.botonesSci2);
+        LinearLayout botonesSci3 = findViewById(R.id.botonesSci3);
         switchMostrarBotones.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -127,25 +131,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // Si el Switch está activado, muestra los botones científicos
                     botonesSci1.setVisibility(View.VISIBLE);
                     botonesSci2.setVisibility(View.VISIBLE);
+                    botonesSci3.setVisibility(View.VISIBLE);
                 } else {
                     // Si el Switch está desactivado, oculta los botones científicos
                     botonesSci1.setVisibility(View.GONE);
                     botonesSci2.setVisibility(View.GONE);
+                    botonesSci3.setVisibility(View.GONE);
                 }
             }
         });
     }
 
-    public Double div(String n1, String n2) {
-        int num1 = Integer.parseInt(n1);
-        int num2 = Integer.parseInt(n2);
-
-        if (num2 == 0) {
+    public Double div(Integer n1, Integer n2) {
+        if (n2 == 0) {
             // Manejar la división por cero aquí, por ejemplo, mostrar un mensaje de error
             return null; // O cualquier otro valor que indique un error
         } else {
-            Double resultado = (double) num1 / num2; // División directa como un double
-            return resultado;
+            int resultado = n1 / n2; // División directa como un double
+            return (double)resultado;
+        }
+    }
+    public Double mod(Integer n1, Integer n2) {
+        if (n2 == 0) {
+            // Manejar la división por cero aquí, por ejemplo, mostrar un mensaje de error
+            return null; // O cualquier otro valor que indique un error
+        } else {
+            int resultado = n1 % n2; // División directa como un double
+            return (double)resultado;
         }
     }
 
@@ -182,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (!primero.isEmpty()){
             //Operandos
             if (id== R.id.tsumar) {
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else{
                     op1 = Double.parseDouble(primero);
@@ -193,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             if(v.getId()==R.id.trestar){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -203,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
             if(v.getId()==R.id.tmultiplicar){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -213,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
             if(v.getId()==R.id.tdividir){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -223,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
             if(v.getId()==R.id.tpotencia){
-                if(primero.length() == 1 && "+-xX*^/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*^/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -236,15 +248,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(primero.length() == 1 && "+-xX*^/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
-                    op1 = Double.parseDouble(primero);
+                    //op1 = Double.parseDouble(primero);
+                    opDiv1 = Integer.parseInt(primero);
                     resultado.setText(num.getText() + "DIV");
                     num.setText("");
-                    operador = 5; //potencia
+                    operador = 5; //DIV
+                }
+            }
+            if(v.getId()==R.id.tmod){
+                if(primero.length() == 1 && "+-xX*^/DIVMOD".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    //op1 = Double.parseDouble(primero);
+                    opDiv1 = Integer.parseInt(primero);
+                    resultado.setText(num.getText() + "MOD");
+                    num.setText("");
+                    operador = 6; //MOD
                 }
             }
             //operaciones cientificas
             if(v.getId()==R.id.tlog){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -254,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
             if(v.getId()==R.id.tln){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -264,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
             if(v.getId()==R.id.tabsolute){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -274,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
             if(v.getId()==R.id.tinverso){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -284,7 +308,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
             if(v.getId()==R.id.tsin){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -293,7 +317,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     resultado.setText(Math.sin(rad) + "");
                 }
             }if(v.getId()==R.id.tcos){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -302,7 +326,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     resultado.setText(Math.cos(rad) + "");
                 }
             }if(v.getId()==R.id.ttan){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -311,7 +335,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     resultado.setText(Math.tan(rad) + "");
                 }
             }if(v.getId()==R.id.texp){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -319,7 +343,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     resultado.setText(Math.pow(10, op1) + "");
                 }
             }if(v.getId()==R.id.traiz){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -327,7 +351,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     resultado.setText(Math.sqrt(op1) + "");
                 }
             }if(v.getId()==R.id.tfact){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     op1 = Double.parseDouble(primero);
@@ -337,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             if(v.getId()==R.id.tigual){
-                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                if(primero.length() == 1 && "+-xX*/DIV".contains(primero)) {
                     num.setText(primero);
                 }else {
                     if (operador == 0) {
@@ -361,16 +385,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         resultado.setText(Math.pow(op1, op2) + "");
                     }
                     if (operador == 5) {
-                        op2 = Double.parseDouble(primero);
-                        String n2 = op2.toString();
-                        String n1 = op1.toString();
-                        Double resultadoDiv = div(n1, n2); // Llama a div con n2 como String
-
-                        if (resultadoDiv != null) {
-                            resultado.setText(resultadoDiv.toString());
-                        } else {
-                            resultado.setText("Error: División por cero");
-                        }
+                        opDiv2 = Integer.parseInt(primero);
+                        resultado.setText(div(opDiv1,opDiv2) + "");
+                    }
+                    if (operador == 6) {
+                        opDiv2 = Integer.parseInt(primero);
+                        resultado.setText(mod(opDiv1,opDiv2) + "");
                     }
                     num.setText("");
                 }
@@ -437,4 +457,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 }
-
