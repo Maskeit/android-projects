@@ -19,11 +19,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button sumar, restar, multiplicar, dividir, tigual,
             log, ln,fact,inverso,sen,cos,tan,exp,absoluto,
-            t0,t1,t2,t3,t4,t5,t6,t7,t8,t9,
+            pi,t0,t1,t2,t3,t4,t5,t6,t7,t8,t9, tdiv,
             tpunto,traiz, tpotencia, tborrar, tborrartodo;
-    Double op1, op2;
+    Double op1, op2, PI;
     int operador;
-    String primero, segundo;
+    String primero;
     EditText num;
     TextView resultado;
     @Override
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tborrar = (Button) findViewById(R.id.tborrar);
         tborrartodo = (Button) findViewById(R.id.tborrartodo);
         // Teclado numerico
+        pi = (Button) findViewById(R.id.tpi);
         t0 = (Button) findViewById(R.id.t0);
         t1 = (Button) findViewById(R.id.t1);
         t2 = (Button) findViewById(R.id.t2);
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         t7 = (Button) findViewById(R.id.t7);
         t8 = (Button) findViewById(R.id.t8);
         t9 = (Button) findViewById(R.id.t9);
+        tdiv = (Button) findViewById(R.id.tdiv);
 //        Button[] buttons = new Button[10]; // Creamos un array de botones para almacenar los botones t0, t1, ..., t9
 //
 //        for (int i = 0; i <= 9; i++) {
@@ -96,7 +98,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tan.setOnClickListener(this);
         exp.setOnClickListener(this);
         absoluto.setOnClickListener(this);
+        tdiv.setOnClickListener(this);
 
+        pi.setOnClickListener(this);
         t0.setOnClickListener(this);
         t1.setOnClickListener(this);
         t2.setOnClickListener(this);
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            Button button = findViewById(id);
 //            button.setOnClickListener(this);
 //        }
+        //pi = Math.PI;
         Switch switchMostrarBotones = findViewById(R.id.switchSci);
         LinearLayout botonesSci1 = findViewById(R.id.botonesSci1);
         LinearLayout botonesSci2 = findViewById(R.id.botonesSci2);
@@ -130,6 +135,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
+
+    public Double div(String n1, String n2) {
+        int num1 = Integer.parseInt(n1);
+        int num2 = Integer.parseInt(n2);
+
+        if (num2 == 0) {
+            // Manejar la división por cero aquí, por ejemplo, mostrar un mensaje de error
+            return null; // O cualquier otro valor que indique un error
+        } else {
+            Double resultado = (double) num1 / num2; // División directa como un double
+            return resultado;
+        }
+    }
+
 
     // metodo para encontrar el factorial de un numero
     public double factorial(double op1){
@@ -162,150 +181,161 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (!primero.isEmpty()){
             //Operandos
-                    if (v.getId() == R.id.tsumar) {
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else{
-                            op1 = Double.parseDouble(primero);
-                            resultado.setText(num.getText() + "+");
-                            num.setText("");
-                            operador = 0; // suma
-                        }
-                    }
+            if (id== R.id.tsumar) {
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else{
+                    op1 = Double.parseDouble(primero);
+                    resultado.setText(num.getText() + "+");
+                    num.setText("");
+                    operador = 0; // suma
+                }
+            }
 
-                    if(v.getId()==R.id.trestar){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            resultado.setText(num.getText() + "-");
-                            num.setText("");
-                            operador = 1; // restar
-                        }
-                    }
-                    if(v.getId()==R.id.tmultiplicar){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            resultado.setText(num.getText() + "*");
-                            num.setText("");
-                            operador = 2; //multiplicar
-                        }
-                    }
-                    if(v.getId()==R.id.tdividir){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            resultado.setText(num.getText() + "/");
-                            num.setText("");
-                            operador = 3; //dividir
-                        }
-                    }
-                    if(v.getId()==R.id.tpotencia){
-                        if(primero.length() == 1 && "+-xX*^/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            resultado.setText(num.getText() + "^");
-                            num.setText("");
-                            operador = 4; //potencia
-                        }
-                    }
-                    //operaciones cientificas
-                    if(v.getId()==R.id.tlog){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            //resultado.setText(num.getText()+" log10");
-                            num.setText("");
-                            resultado.setText(Math.log10(op1) + "");
-                        }
-                    }
-                    if(v.getId()==R.id.tln){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            //resultado.setText(num.getText()+" ln");
-                            num.setText("");
-                            resultado.setText(Math.log(op1) + "");
-                        }
-                    }
-                    if(v.getId()==R.id.tabsolute){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            //resultado.setText(num.getText()+" abs");
-                            num.setText("");
-                            resultado.setText(Math.abs(op1) + "");
-                        }
-                    }
-                    if(v.getId()==R.id.tinverso){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            //resultado.setText(num.getText()+" inverso");
-                            num.setText("");
-                            resultado.setText((1.0 / op1) + "");
-                        }
-                    }
-                    if(v.getId()==R.id.tsin){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            double rad = Math.toRadians(op1);
-                            num.setText("");
-                            resultado.setText(Math.sin(rad) + "");
-                        }
-                    }if(v.getId()==R.id.tcos){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            double rad = Math.toRadians(op1);
-                            num.setText("");
-                            resultado.setText(Math.cos(rad) + "");
-                        }
-                    }if(v.getId()==R.id.ttan){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            double rad = Math.toRadians(op1);
-                            num.setText("");
-                            resultado.setText(Math.tan(rad) + "");
-                        }
-                    }if(v.getId()==R.id.texp){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            num.setText("");
-                            resultado.setText(Math.pow(10, op1) + "");
-                        }
-                    }if(v.getId()==R.id.traiz){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            num.setText("");
-                            resultado.setText(Math.sqrt(op1) + "");
-                        }
-                    }if(v.getId()==R.id.tfact){
-                        if(primero.length() == 1 && "+-xX*/".contains(primero)) {
-                            num.setText(primero);
-                        }else {
-                            op1 = Double.parseDouble(primero);
-                            num.setText("");
-                            resultado.setText(factorial(op1) + "");
-                        }
-                    }
+            if(v.getId()==R.id.trestar){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    resultado.setText(num.getText() + "-");
+                    num.setText("");
+                    operador = 1; // restar
+                }
+            }
+            if(v.getId()==R.id.tmultiplicar){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    resultado.setText(num.getText() + "*");
+                    num.setText("");
+                    operador = 2; //multiplicar
+                }
+            }
+            if(v.getId()==R.id.tdividir){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    resultado.setText(num.getText() + "/");
+                    num.setText("");
+                    operador = 3; //dividir
+                }
+            }
+            if(v.getId()==R.id.tpotencia){
+                if(primero.length() == 1 && "+-xX*^/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    resultado.setText(num.getText() + "^");
+                    num.setText("");
+                    operador = 4; //potencia
+                }
+            }
+            if(v.getId()==R.id.tdiv){
+                if(primero.length() == 1 && "+-xX*^/DIV".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    resultado.setText(num.getText() + "DIV");
+                    num.setText("");
+                    operador = 5; //potencia
+                }
+            }
+            //operaciones cientificas
+            if(v.getId()==R.id.tlog){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    //resultado.setText(num.getText()+" log10");
+                    num.setText("");
+                    resultado.setText(Math.log10(op1) + "");
+                }
+            }
+            if(v.getId()==R.id.tln){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    //resultado.setText(num.getText()+" ln");
+                    num.setText("");
+                    resultado.setText(Math.log(op1) + "");
+                }
+            }
+            if(v.getId()==R.id.tabsolute){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    //resultado.setText(num.getText()+" abs");
+                    num.setText("");
+                    resultado.setText(Math.abs(op1) + "");
+                }
+            }
+            if(v.getId()==R.id.tinverso){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    //resultado.setText(num.getText()+" inverso");
+                    num.setText("");
+                    resultado.setText((1.0 / op1) + "");
+                }
+            }
+            if(v.getId()==R.id.tsin){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    double rad = Math.toRadians(op1);
+                    num.setText("");
+                    resultado.setText(Math.sin(rad) + "");
+                }
+            }if(v.getId()==R.id.tcos){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    double rad = Math.toRadians(op1);
+                    num.setText("");
+                    resultado.setText(Math.cos(rad) + "");
+                }
+            }if(v.getId()==R.id.ttan){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    double rad = Math.toRadians(op1);
+                    num.setText("");
+                    resultado.setText(Math.tan(rad) + "");
+                }
+            }if(v.getId()==R.id.texp){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    num.setText("");
+                    resultado.setText(Math.pow(10, op1) + "");
+                }
+            }if(v.getId()==R.id.traiz){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    num.setText("");
+                    resultado.setText(Math.sqrt(op1) + "");
+                }
+            }if(v.getId()==R.id.tfact){
+                if(primero.length() == 1 && "+-xX*/".contains(primero)) {
+                    num.setText(primero);
+                }else {
+                    op1 = Double.parseDouble(primero);
+                    num.setText("");
+                    resultado.setText(factorial(op1) + "");
+                }
+            }
+
             if(v.getId()==R.id.tigual){
                 if(primero.length() == 1 && "+-xX*/".contains(primero)) {
                     num.setText(primero);
@@ -329,6 +359,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (operador == 4) {
                         op2 = Double.parseDouble(primero);
                         resultado.setText(Math.pow(op1, op2) + "");
+                    }
+                    if (operador == 5) {
+                        op2 = Double.parseDouble(primero);
+                        String n2 = op2.toString();
+                        String n1 = op1.toString();
+                        Double resultadoDiv = div(n1, n2); // Llama a div con n2 como String
+
+                        if (resultadoDiv != null) {
+                            resultado.setText(resultadoDiv.toString());
+                        } else {
+                            resultado.setText("Error: División por cero");
+                        }
                     }
                     num.setText("");
                 }
@@ -385,6 +427,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     num.setText("0."); //si es vacio, entonces empieza con 0.
                 }
             }
+        }else if(id == R.id.tpi){
+            String textoActual = num.getText().toString();
+            if(!textoActual.contains(".")) {
+                num.setText("");
+                PI = Math.PI;
+                num.setText(num.getText() + PI.toString());
+            }
         }
     }
 }
+
