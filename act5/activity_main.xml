@@ -6,20 +6,17 @@
     android:layout_height="match_parent"
     android:padding="25dp"
     tools:context=".MainActivity">
-
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Login"
+        android:textSize="15dp"
+        android:textAlignment="center"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Usuario"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:id="@+id/usuario"/>
     <EditText
         android:layout_width="match_parent"
@@ -29,13 +26,15 @@
         android:hint="Password"
         android:layout_marginTop="20dp"
         android:id="@+id/password"/>
+
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ingresar"
         android:id="@+id/ingresar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/password"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Ingresar" />
 
 
 </RelativeLayout>

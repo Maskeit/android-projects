@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     String usu, pass;
     Toast mensaje;
     Intent i;
+    String[][] nombres = {{"Miguel", "asd"}, {"Maria", "456"},{"Brenda", "789"}};
+    Boolean existe = false;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -29,34 +31,31 @@ public class MainActivity extends AppCompatActivity {
         ingresar = (Button) findViewById(R.id.ingresar);
         //Implementar el onClick
         ingresar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SuspiciousIndentation")
             @Override
             public void onClick(View view) {
                 usu = usuario.getText().toString();
                 pass = password.getText().toString();
-                //Notificacioens popup rapido
-//               mensaje =  Toast.makeText(MainActivity.this, "Hola",Toast.LENGTH_LONG);
-//               mensaje.show();
 
-//                mensaje = Toast.makeText(MainActivity.this, usu + " " + pass,
-//                        Toast.LENGTH_LONG);
-//                mensaje.show();
-                if(usu.isEmpty() || pass.isEmpty()){
-                        mensaje = Toast.makeText(MainActivity.this, "Completa los campos correctamente",
-                        Toast.LENGTH_LONG);
-                }
-                else if (usu.equals("mike") && pass.equals("asd")){
-                    mensaje = Toast.makeText(MainActivity.this, "Bienvenido",
-                            Toast.LENGTH_LONG);
+                for(int c=0; c<nombres.length; c++){
+                    if(usu.equals(nombres[c][0]) && pass.equals(nombres[c][1])){
+                        //Cambiamos la bandera a true
+                        existe = true;
+
+                    }
+                } if(existe){
+//                    mensaje = Toast.makeText(MainActivity.this, "Bienvenido",
+//                            Toast.LENGTH_LONG);
                     i = new Intent(MainActivity.this, bienvenida.class);
-                            i.putExtra("usuario", usu);
-                            i.putExtra("pass",pass);
-                            startActivity(i);
+                    i.putExtra("usuario", usu);
+                    i.putExtra("pass",pass);
+                    startActivity(i);
+                    existe = false;
+                }else {
+                    mensaje = Toast.makeText(MainActivity.this, "Usuario o contraseña incorrecta",
+                            Toast.LENGTH_LONG);
                 }
-                else {
-                    mensaje = Toast.makeText(MainActivity.this, "Usuario o contrasena incorrecta",
-                    Toast.LENGTH_LONG);
-                }
-                    mensaje.show();
+                mensaje.show();
                 usuario.setText("");
                 password.setText("");
             }
