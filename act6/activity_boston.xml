@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".boston">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF">
+
+        <Button
+            android:id="@+id/regresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D6D6D6"
+            android:text="Volver"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+        <!--            android:drawableLeft="@drawable/ic_icon"-->
+
+
+        <TextView
+            android:id="@+id/titlecalorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="Tiempo requerido"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/txtnombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="1dp"
+        android:text="Nombre"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/txtsexo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtnombre"
+        android:layout_marginTop="15dp"
+        android:text="Sexo"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/txtedad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtsexo"
+        android:layout_marginTop="15dp"
+        android:text="Edad"
+        android:textSize="20dp" />
+
+
+    <Button
+        android:id="@+id/calcular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtedad"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:backgroundTint="#C2C561"
+        android:text="Tiempo Requerido"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/resultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calcular"
+        android:layout_marginTop="15dp"
+        android:hint="Resultado"
+        android:textSize="25dp" />
+
+</RelativeLayout>

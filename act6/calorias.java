@@ -2,20 +2,23 @@ package com.maskeit.actividad5;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 public class calorias extends AppCompatActivity implements View.OnClickListener {
     TextView txtnombre, txtedad, txtsexo, resultado;
     EditText estatura, masa;
-    Button calcular;
+    Button calcular, regresar;
     String nombre, edad, sexo;
     double masakg, estaturacm;
+    Toast alert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +35,24 @@ public class calorias extends AppCompatActivity implements View.OnClickListener 
         txtedad.setText("Edad: " + edad);
         txtsexo.setText("Sexo: "+ sexo);
 
-
         estatura = (EditText) findViewById(R.id.estatura);
         masa = (EditText) findViewById(R.id.masa);
         calcular = (Button) findViewById(R.id.calcular);
         resultado = (TextView) findViewById(R.id.resultado);
 
+        regresar = (Button) findViewById(R.id.regresar);
+
         //Asigno el evento click al boton calcular
         calcular.setOnClickListener(this);
+        regresar.setOnClickListener(this);
+
+        // Este es el código que asigna el evento OnBackPressed al botón regresar
+        regresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
     }
 
@@ -62,22 +75,28 @@ public class calorias extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View view) {
 
         int id = view.getId();
+        String unit = " Kcal/dia";
+
         if(id == R.id.calcular){
-            // calcular calorias diarias basales: Tasa Metabolica Basal
+            // Calcular calorias diarias basales: Tasa Metabolica Basal
             String peso = masa.getText().toString();
             String altura = estatura.getText().toString();
             masakg = Double.parseDouble(peso);
             estaturacm = Double.parseDouble(altura);
             int age = Integer.parseInt(edad);
-            resultado.setText(tmbMujer(masakg,estaturacm,age) + "");
-        }else if(id == R.id.calcular){
-            // calcular calorias diarias basales: Tasa Metabolica Basal
-            String peso = masa.getText().toString();
-            String altura = estatura.getText().toString();
-            masakg = Double.parseDouble(peso);
-            estaturacm = Double.parseDouble(altura);
-            int age = Integer.parseInt(edad);
-            resultado.setText(tmbHombre(masakg,estaturacm,age) + "");
+
+            if(!peso.isEmpty() && !altura.isEmpty()){
+                if ("Hombre".equals(sexo)){
+                    resultado.setText(tmbHombre(masakg,estaturacm,age) + unit);
+                }else if ("Mujer".equals(sexo)) {
+                    resultado.setText(tmbMujer(masakg, estaturacm, age) + unit);
+                }
+            }else{
+                alert = Toast.makeText(calorias.this, "Completa todos los campos.", Toast.LENGTH_LONG);
+                alert.show();
+            }
         }
     }
+
+
 }
