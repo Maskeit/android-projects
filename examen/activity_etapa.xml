@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".etapa">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtname"
+        android:textSize="22sp"
+        android:layout_marginBottom="15dp"
+        android:text="Nombre"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtfecha"
+        android:layout_below="@id/txtname"
+        android:textSize="22sp"
+        android:layout_marginBottom="15dp"
+        android:text="Fechanac"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtedad"
+        android:layout_below="@id/txtfecha"
+        android:textSize="22sp"
+        android:layout_marginBottom="15dp"
+        android:text="edad"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtetapa"
+        android:layout_below="@id/txtedad"
+        android:textSize="22sp"
+        android:layout_marginBottom="15dp"
+        android:text="Etapa"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtetapa"
+        android:id="@+id/regresar"
+        android:textSize="20sp"
+        android:text="volver al inicio"/>
+
+
+</RelativeLayout>
