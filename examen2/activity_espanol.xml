@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".espanol">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/title"
+        android:text="Español"
+        android:textSize="20dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/Q1"
+        android:layout_below="@id/title"
+        android:text="Cuantas letras tiene el alfabeto:"
+        android:textSize="20dp" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radio_group1"
+        android:layout_below="@id/Q1"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radio_R1Q1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20"/>
+        <RadioButton
+            android:id="@+id/radio_R2Q1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30"/>
+        <RadioButton
+            android:id="@+id/radio_R3Q1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="27"/>
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/Q2"
+        android:layout_below="@id/radio_group1"
+        android:text="Cuales son las vocales:"
+        android:textSize="20dp" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radio_group2"
+        android:layout_below="@id/Q2"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radio_R1Q2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AEITO"/>
+        <RadioButton
+            android:id="@+id/radio_R2Q2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AEIOU"/>
+        <RadioButton
+            android:id="@+id/radio_R3Q2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AOUER"/>
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/Q3"
+        android:layout_below="@id/radio_group2"
+        android:text="Que palabra lleva acento?"
+        android:textSize="20dp" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radio_group3"
+        android:layout_below="@id/Q3"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radio_R1Q3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="camion"/>
+        <RadioButton
+            android:id="@+id/radio_R2Q3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tiempo"/>
+        <RadioButton
+            android:id="@+id/radio_R3Q3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hormiga"/>
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/Q4"
+        android:layout_below="@id/radio_group3"
+        android:text="Del verbo 'Haber' cual es correcta:"
+        android:textSize="20dp" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radio_group4"
+        android:layout_below="@id/Q4"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radio_R1Q4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ay"/>
+        <RadioButton
+            android:id="@+id/radio_R2Q4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hay"/>
+        <RadioButton
+            android:id="@+id/radio_R3Q4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ahi"/>
+    </RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/resultado"
+        android:layout_below="@id/radio_group4"
+        android:text="Calificar"
+        android:textSize="22dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/regresar"
+        android:layout_below="@id/resultado"
+        android:text="Regresar"
+        android:textSize="22dp"/>
+
+</RelativeLayout>
