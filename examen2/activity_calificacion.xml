@@ -30,11 +30,20 @@
         android:text="Resultado"
         android:layout_marginBottom="30dp"
         android:textSize="20dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/aprobacion"
+        android:layout_below="@id/txtresultado"
+        android:text="Nota"
+        android:layout_marginBottom="30dp"
+        android:textSize="20dp" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/regresar"
-        android:layout_below="@id/txtresultado"
+        android:layout_below="@id/aprobacion"
         android:text="Regresar al inicio"/>
 
 </RelativeLayout>

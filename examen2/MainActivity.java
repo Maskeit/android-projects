@@ -33,20 +33,21 @@ public class MainActivity extends AppCompatActivity {
 
         aplicar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
                 if (checkedRadioButtonId != -1) {
                     RadioButton checkedRadioButton = findViewById(checkedRadioButtonId);
                     selectMateria = checkedRadioButton.getText().toString();
                 }
 
-                if ("radio_matematicas".equals(selectMateria)) {
+                if ("Matematicas".equals(selectMateria)) {
                     processIntent(matematicas.class);
-                } else if ("radio_espanol".equals(selectMateria)) {
+                } else if ("Español".equals(selectMateria)) {
                     processIntent(espanol.class);
                 }
             }
         });
+
     }
 
     private void processIntent(Class<?> activityClass){
