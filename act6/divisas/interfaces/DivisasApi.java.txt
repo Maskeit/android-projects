@@ -1,0 +1,15 @@
+package com.maskeit.spinner.interfaces;
+
+import com.maskeit.spinner.modelo.Moneda;
+
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+
+
+public interface DivisasApi {
+    @GET("daily/{currency}.json")
+    Call<Moneda> getExchangeRate(@Path("currency") String currency);
+}

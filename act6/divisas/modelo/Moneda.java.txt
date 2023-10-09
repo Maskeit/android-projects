@@ -1,0 +1,28 @@
+package com.maskeit.spinner.modelo;
+
+public class Moneda {
+    private String code;
+    private String alphaCode;
+    private String numericCode;
+    private String name;
+    private double rate;
+    private String date;
+    private double inverseRate;
+
+    public String getCode() {return code;}
+
+    public String getAlphaCode() {return alphaCode;}
+
+    public String getNumericCode() {return numericCode;}
+
+    public String getName() {return name;}
+
+    public String getRate() {
+        return Double.toString(rate); // o String.valueOf(rate);
+    }
+    public String getDate() {return date;}
+
+    public String getInverseRate() {
+        return Double.toString(inverseRate); // o String.valueOf(inverseRate);
+    }
+}

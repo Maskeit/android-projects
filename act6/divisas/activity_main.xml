@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Convertidor de divisas"
+        android:textSize="25dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/title"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/moneda1"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moneda1"
+        android:id="@+id/moneda2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moneda2"
+        android:id="@+id/lineaconversion"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/divisa1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:inputType="numberDecimal|number"
+            android:textAlignment="center"
+            android:hint="$$"/>
+
+        <TextView
+            android:id="@+id/divisa2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="cambio"
+            android:textAlignment="center"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lineaconversion"
+        android:layout_marginVertical="20dp"
+        android:id="@+id/convertir"
+        android:text="Convertir"/>
+</RelativeLayout>
