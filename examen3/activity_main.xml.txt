@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_dark_background"
+    android:backgroundTint="#9A207398"
     tools:context=".MainActivity">
 
     <TextView
@@ -23,99 +24,133 @@
         android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_below="@id/date"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/searchCityEdittext"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Busca una ciudad..."
-            android:textColorHint="#F6F4F4" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:id="@+id/filledTextField"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchCityEdittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:hint="Search city..."
+                android:textColorHint="#F6F4F4"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:id="@+id/floatinActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buscar" />
+            android:backgroundTint="@color/seed"
+            android:layout_marginStart="14dp"
+            android:text="Search"
+            android:textColor="@color/md_theme_light_onPrimary"
+            android:textSize="15dp" />
     </LinearLayout>
-
+    <!--        <EditText-->
+    <!--            android:id="@+id/searchCityEdittext"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="16dp"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:hint="Search city..."-->
+    <!--            android:textColorHint="#F6F4F4" />-->
     <TextView
         android:id="@+id/mainTempValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/searchLayout"
-        android:layout_marginTop="16dp"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="0dp"
         android:padding="16dp"
         android:text="mainTempValue"
-        android:textColor="#000000" />
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/maxTempValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/mainTempValue"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:padding="16dp"
         android:text="Card 1"
-        android:textColor="#000000" />
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/minTempValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/maxTempValue"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:padding="16dp"
         android:text="Card 2"
-        android:textColor="#000000" />
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/pressureValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/minTempValue"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:padding="16dp"
         android:text="Card 3"
-        android:textColor="#000000" />
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/humidityValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/pressureValue"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:padding="16dp"
         android:text="Card 4"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/cityName"
-        android:layout_below="@id/humidityValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:text="Ciudad"
-        android:padding="16dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:textColor="#FFFFFF" />
 
     <TextView
-        android:id="@+id/description"
-        android:layout_below="@id/cityName"
+        android:id="@+id/cityName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_below="@id/humidityValue"
         android:layout_marginStart="16dp"
-        android:text="descripcion"
+        android:layout_marginTop="16dp"
         android:padding="16dp"
+        android:text="City"
+        android:textSize="23dp"
+        android:textStyle="italic"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cityName"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:text="descripcion"
+        android:textSize="20dp"
         android:textColor="#FFFFFF" />
 </RelativeLayout>
