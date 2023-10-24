@@ -1,0 +1,103 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".detalle">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/barrasuperior">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/btnTopAppBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:textAlignment="inherit"
+            app:menu="@menu/top_app" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/barrasuperior">
+
+        <!-- LinearLayout para los detalles del usuario -->
+        <LinearLayout
+            android:id="@+id/detallesDeUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="id"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtnombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/txtapellido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alejandre"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/txttelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefono"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/txtedad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edad"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/txtgenero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genero"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/txtestatura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estatura"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+        <!-- ImageButton para borrar -->
+        <ImageButton
+            android:id="@+id/btnBorrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_delete_24"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/app_delete_user"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:onClick="borrarUsuario"/>
+    </RelativeLayout>
+</RelativeLayout>
+

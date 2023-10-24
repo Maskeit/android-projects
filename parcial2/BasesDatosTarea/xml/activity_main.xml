@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="id"
+        android:id="@+id/campoid" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/campoid"
+        android:id="@+id/lineaNombres">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Nombre"
+            android:inputType="text"
+            android:id="@+id/camponombre"
+            />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:hint="Apellido"
+            android:id="@+id/campoapellido"
+            />
+    </LinearLayout>
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:hint="edad"
+        android:id="@+id/campoedad"
+        android:layout_below="@id/lineaNombres"
+        android:layout_marginTop="10dp"
+        android:inputType="number|numberSigned"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="telefono"
+        android:id="@+id/campotelefono"
+        android:layout_below="@id/campoedad"
+        android:layout_marginTop="10dp"
+        android:inputType="phone"
+        />
+    <EditText
+        android:id="@+id/etBirthDate"
+        android:hint="date"
+        android:layout_below="@id/campotelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:focusable="false"
+        android:clickable="true"
+        android:maxLines="1" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/generos"
+        android:layout_below="@id/etBirthDate"
+        >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/hombre"
+            android:hint="Hombre"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/mujer"
+            android:hint="Mujer"/>
+    </RadioGroup>
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Estatura (cm)"
+        android:id="@+id/campoestatura"
+        android:layout_below="@id/generos"
+        android:layout_marginTop="10dp"
+        android:inputType="number|numberSigned"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/campoestatura"
+        android:id="@+id/grupo1">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Insertar 1"
+            android:id="@+id/insertar1"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Insertar 2"
+            android:id="@+id/insertar2"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/grupo1"
+        android:id="@+id/grupo2">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Buscar 1"
+            android:id="@+id/buscar1"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Buscar 2"
+            android:id="@+id/buscar2"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/grupo2"
+        android:id="@+id/grupo3">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Editar"
+            android:id="@+id/editar"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Eliminar"
+            android:id="@+id/eliminar"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ver"
+        android:layout_below="@id/grupo3"
+        android:text="Ver"/>
+</RelativeLayout>
