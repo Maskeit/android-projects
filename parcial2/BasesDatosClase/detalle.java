@@ -20,7 +20,8 @@ public class detalle extends AppCompatActivity {
             b.txtid.setText(usu.getId().toString());
             b.txtnombre.setText(usu.getNombre().toString());
             b.txttelefono.setText(usu.getTelefono().toString());
+        }else {
+            b.txtid.setText("No hay datos para mostrar.");
         }
-
     }
 }

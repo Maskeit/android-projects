@@ -69,7 +69,7 @@ public class lista extends AppCompatActivity implements AdapterView.OnItemClickL
         Usuarios usuario = datosusuarios.get(position);
         Intent ii = new Intent(this,detalle.class);
         Bundle b = new Bundle();
-        b.putSerializable("usuario", usuario); //emaquetar el objeto para ser transmitido a la vista detalle, su etiqueta seria usuario
+        b.putSerializable("usuario", usuario); //empaquetar el objeto para ser transmitido a la vista detalle, su etiqueta seria usuario
         ii.putExtras(b);
         startActivity(ii);
     }
