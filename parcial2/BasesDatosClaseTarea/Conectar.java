@@ -25,5 +25,4 @@ public class Conectar extends SQLiteOpenHelper{
         db.execSQL(Variables.ELIMINAR_TABLA);
         onCreate(db);
     }
-
 }

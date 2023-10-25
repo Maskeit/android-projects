@@ -15,6 +15,7 @@ import android.widget.ListView;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import com.maskeit.basesdatos.databinding.ActivityListaBinding;
+import com.maskeit.basesdatos.databinding.ActivityMainBinding;
 
 public class lista extends AppCompatActivity implements AdapterView.OnItemClickListener {
     ListView lista;
@@ -27,25 +28,13 @@ public class lista extends AppCompatActivity implements AdapterView.OnItemClickL
         super.onCreate(savedInstanceState);
         b = ActivityListaBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
-        setTitle("Usuarios");
-
-        // Configurar el botón de regreso en la barra superior
-        setSupportActionBar(b.btnTopAppBack);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        b.btnTopAppBack.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-
+        setTitle("Ver usuarios");
         //usar "b.lista"
         mostrar();
-        ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, listausuarios);
+        ArrayAdapter<String> aa =new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, listausuarios);
         b.lista.setAdapter(aa);
-        b.lista.setOnItemClickListener(this); // con este evento vamos al metodo setOnItemClickListener
+        b.lista.setOnItemClickListener(this); //con este evento vamos al metodo setOnitemClickListener
     }
-
 
     private void mostrar() {
         conectar = new Conectar(this, Variables.NOMBRE_BD, null,1);
@@ -69,12 +58,8 @@ public class lista extends AppCompatActivity implements AdapterView.OnItemClickL
         for(int i = 0; i<datosusuarios.size(); i++){
             listausuarios.add(
                     datosusuarios.get(i).getId()+" - "+
-                            datosusuarios.get(i).getNombre()+" - "+
-                            datosusuarios.get(i).getApellido()+" - "+
-                            datosusuarios.get(i).getTelefono()+" - "+
-                            datosusuarios.get(i).getEdad()+" - "+
-                            datosusuarios.get(i).getGenero()+" - "+
-                            datosusuarios.get(i).getEstatura()
+                    datosusuarios.get(i).getNombre()+" - "+
+                    datosusuarios.get(i).getTelefono()
             );
         }
     }
@@ -84,9 +69,8 @@ public class lista extends AppCompatActivity implements AdapterView.OnItemClickL
         Usuarios usuario = datosusuarios.get(position);
         Intent ii = new Intent(this,detalle.class);
         Bundle b = new Bundle();
-        b.putSerializable("usuario", usuario); //emaquetar el objeto para ser transmitido a la vista detalle, su etiqueta seria usuario
+        b.putSerializable("usuario", usuario); //empaquetar el objeto para ser transmitido a la vista detalle, su etiqueta seria usuario
         ii.putExtras(b);
         startActivity(ii);
     }
-
 }

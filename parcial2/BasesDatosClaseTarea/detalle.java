@@ -19,13 +19,14 @@ public class detalle extends AppCompatActivity {
         Usuarios usu = null;
         if(objeto != null){
             usu = (Usuarios) objeto.getSerializable("usuario");
-            b.txtid.setText(usu.getId().toString());
-            b.txtnombre.setText(usu.getNombre().toString());
-            b.txtapellido.setText(usu.getApellido().toString());
-            b.txttelefono.setText(usu.getTelefono().toString());
-            b.txtedad.setText(usu.getEdad().toString());
-            b.txtgenero.setText(usu.getGenero().toString());
-            b.txtestatura.setText(usu.getGenero().toString());
+            b.txtid.setText("id: "+usu.getId().toString());
+            b.txtnombre.setText("Nombre: "+usu.getNombre().toString());
+            b.txtapellido.setText("Apellido"+usu.getApellido().toString());
+            b.txttelefono.setText("Telefono: "+usu.getTelefono().toString());
+            b.txtedad.setText("Edad: "+usu.getEdad().toString());
+            b.txtcumpleanos.setText("Cumpleaños: "+usu.getBdate().toString());
+            b.txtestatura.setText(usu.getEstatura().toString()+" cm");
+            b.txtgenero.setText("Genero: "+usu.getGenero().toString());
         }
         setSupportActionBar(b.btnTopAppBack);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -12,105 +12,78 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="id"
-        android:id="@+id/campoid" />
-
-    <LinearLayout
+        android:id="@+id/campoid"
+        />
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="nombre"
+        android:id="@+id/camponombre"
         android:layout_below="@id/campoid"
-        android:id="@+id/lineaNombres">
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Nombre"
-            android:inputType="text"
-            android:id="@+id/camponombre"
-            />
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="text"
-            android:hint="Apellido"
-            android:id="@+id/campoapellido"
-            />
-    </LinearLayout>
-    <EditText
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:hint="edad"
-        android:id="@+id/campoedad"
-        android:layout_below="@id/lineaNombres"
         android:layout_marginTop="10dp"
-        android:inputType="number|numberSigned"
         />
-
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Apellido"
+        android:id="@+id/campoapellido"
+        android:layout_below="@id/camponombre"
+        android:layout_marginTop="10dp"
+        />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="telefono"
         android:id="@+id/campotelefono"
+        android:layout_below="@id/campoapellido"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Edad"
+        android:id="@+id/campoedad"
+        android:layout_below="@id/campotelefono"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Estatura"
+        android:id="@+id/campoestatura"
         android:layout_below="@id/campoedad"
         android:layout_marginTop="10dp"
-        android:inputType="phone"
         />
     <EditText
         android:id="@+id/etBirthDate"
         android:hint="date"
-        android:layout_below="@id/campotelefono"
+        android:layout_below="@id/campoestatura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:focusable="false"
         android:clickable="true"
         android:maxLines="1" />
-    <RadioGroup
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Escribe tu genero"
         android:id="@+id/generos"
         android:layout_below="@id/etBirthDate"
-        >
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/hombre"
-            android:hint="Hombre"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/mujer"
-            android:hint="Mujer"/>
-    </RadioGroup>
-    <EditText
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:hint="Estatura (cm)"
-        android:id="@+id/campoestatura"
-        android:layout_below="@id/generos"
         android:layout_marginTop="10dp"
-        android:inputType="number|numberSigned"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/campoestatura"
+        android:layout_below="@id/generos"
         android:id="@+id/grupo1">
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Insertar 1"
-            android:id="@+id/insertar1"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Insertar 2"
-            android:id="@+id/insertar2"/>
+            android:text="Insertar"
+            android:id="@+id/insertar"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -122,14 +95,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Buscar 1"
-            android:id="@+id/buscar1"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Buscar 2"
-            android:id="@+id/buscar2"/>
+            android:text="Buscar"
+            android:id="@+id/buscar"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -157,3 +124,4 @@
         android:layout_below="@id/grupo3"
         android:text="Ver"/>
 </RelativeLayout>
+

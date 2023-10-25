@@ -56,18 +56,26 @@
                 android:text="Alejandre"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp" />
+
             <TextView
                 android:id="@+id/txttelefono"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Telefono"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp" />
+                android:textSize="20sp" />
             <TextView
                 android:id="@+id/txtedad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edad"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:id="@+id/txtcumpleanos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cumpleaños"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp" />
             <TextView
@@ -85,19 +93,6 @@
                 android:textSize="20sp"
                 android:layout_marginTop="10dp" />
         </LinearLayout>
-
-        <!-- ImageButton para borrar -->
-        <ImageButton
-            android:id="@+id/btnBorrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_delete_24"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/app_delete_user"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="20dp"
-            android:onClick="borrarUsuario"/>
     </RelativeLayout>
 </RelativeLayout>
 

@@ -123,11 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String[] campos = {Variables.CAMPO_NOMBRE,Variables.CAMPO_TELEFONO};
 
         try {
-            Cursor cursor = bd.query(
-                Variables.NOMBRE_TABLA,
-                campos, 
-                Variables.CAMPO_ID+"=?",parametros, null, null, null
-                );
+            Cursor cursor = bd.query(Variables.NOMBRE_TABLA, campos, Variables.CAMPO_ID+"=?",parametros, null, null, null);
             cursor.moveToFirst();
             b.camponombre.setText(cursor.getString(0));
             b.campotelefono.setText(cursor.getString(1));

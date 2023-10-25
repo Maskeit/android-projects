@@ -3,14 +3,15 @@ package com.maskeit.basesdatos;
 import java.io.Serializable;
 // getters and setters
 public class Usuarios implements Serializable {
-    public Integer id;
-    public String nombre;
-    public String apellido;
-    public String telefono;
-    public String bdate;
-    public Integer edad;
-    public Integer estatura;
-    public String genero;
+    private Integer id;
+    private String nombre;
+    private String apellido;
+    private String telefono;
+    private String bdate;
+    private Integer edad;
+    private Integer estatura;
+    private String genero;
+
 
     public Usuarios(Integer id, String nombre, String apellido,
                     String telefono, String bdate,
@@ -27,7 +28,7 @@ public class Usuarios implements Serializable {
     }
 
     public Usuarios(){
-
+        //empty
     }
 
     public Integer getId() {
