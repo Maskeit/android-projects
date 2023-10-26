@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="telefono"
+        android:inputType="number"
         android:id="@+id/campotelefono"
         android:layout_below="@id/campoapellido"
         android:layout_marginTop="10dp"
@@ -42,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Edad"
+        android:inputType="number"
         android:id="@+id/campoedad"
         android:layout_below="@id/campotelefono"
         android:layout_marginTop="10dp"
@@ -50,6 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Estatura"
+        android:inputType="number"
         android:id="@+id/campoestatura"
         android:layout_below="@id/campoedad"
         android:layout_marginTop="10dp"
@@ -116,6 +119,12 @@
             android:layout_weight="1"
             android:text="Eliminar"
             android:id="@+id/eliminar"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Limpiar"
+            android:id="@+id/limpiar"/>
     </LinearLayout>
     <Button
         android:layout_width="match_parent"
