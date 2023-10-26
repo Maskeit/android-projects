@@ -3,6 +3,7 @@ package com.maskeit.basesdatos;
 import androidx.appcompat.app.AppCompatActivity;
 import com.maskeit.basesdatos.databinding.ActivityMainBinding;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -17,6 +18,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ActivityMainBinding b;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b.editar.setOnClickListener(this);
         b.eliminar.setOnClickListener(this);
         b.ver.setOnClickListener(this);
+        b.limpiar.setOnClickListener(this);
         // Conectar a la BD
         conectar = new Conectar(this, Variables.NOMBRE_BD, null, 1);
 
@@ -48,17 +52,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         // inicializar variables
-         id = b.campoid.getText().toString();
-         nombre = b.camponombre.getText().toString();
-         apellido = b.campoapellido.getText().toString();
-         telefono = b.campotelefono.getText().toString();
-         edad = b.campoedad.getText().toString();
-         estatura = b.campoestatura.getText().toString();
-         bday = b.etBirthDate.getText().toString();
-         selectedGender = b.generos.getText().toString();
+        id = b.campoid.getText().toString();
+        nombre = b.camponombre.getText().toString();
+        apellido = b.campoapellido.getText().toString();
+        telefono = b.campotelefono.getText().toString();
+        edad = b.campoedad.getText().toString();
+        estatura = b.campoestatura.getText().toString();
+        bday = b.etBirthDate.getText().toString();
+        selectedGender = b.generos.getText().toString();
         boolean b1 = !selectedGender.isEmpty() ||!nombre.isEmpty() || !apellido.isEmpty() || !telefono.isEmpty() || !edad.isEmpty() ||!estatura.isEmpty() || !bday.isEmpty();
+        boolean noVacios = !selectedGender.isEmpty() && !nombre.isEmpty() && !apellido.isEmpty() && !telefono.isEmpty() && !edad.isEmpty() &&!estatura.isEmpty() && !bday.isEmpty();
         if(b1) {
-            if (v == b.insertar) {
+            if ((v == b.insertar) && noVacios) {
                 insertar();
             }
         }else {
@@ -71,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d("MainActivity", "Iniciando actividad Lista");
         }
 
-// Verificamos que al menos uno de los campos tenga algún valor
+        // Verificamos que al menos uno de los campos tenga algún valor
         if (!TextUtils.isEmpty(id) ||!TextUtils.isEmpty(apellido) || !TextUtils.isEmpty(edad) || !TextUtils.isEmpty(estatura)) {
             if (v == b.buscar) {
                 buscar();
@@ -85,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == b.etBirthDate) {
             showDatePickerDialog();
+        } else if (v == b.limpiar) {
+            limpiarCampos();
         }
 
     }
@@ -136,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bd.close();
     }
 
+    @SuppressLint("Range")
     private void buscar() {
         SQLiteDatabase bd = conectar.getReadableDatabase();
         String[] parametros = {
@@ -145,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 b.campoestatura.getText().toString()
         };
         String[] campos = {
+                Variables.CAMPO_ID,
                 Variables.CAMPO_NOMBRE,
                 Variables.CAMPO_APELLIDO,
                 Variables.CAMPO_TELEFONO,
@@ -153,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Variables.CAMPO_BDAY,
                 Variables.CAMPO_GENERO
         };
+
         String whereClause = Variables.CAMPO_ID + "=? OR " +
                 Variables.CAMPO_APELLIDO + "=? OR " +
                 Variables.CAMPO_EDAD + "=? OR " +
@@ -172,17 +182,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (cursor.getCount() == 1 && cursor.moveToFirst()) {
                 // Si hay un solo resultado, asignar directamente los valores
-                b.camponombre.setText(cursor.getString(0));
-                b.campoapellido.setText(cursor.getString(1));
-                b.campotelefono.setText(cursor.getString(2));
-                b.campoedad.setText(cursor.getString(3));
-                b.campoestatura.setText(cursor.getString(4));
-                b.etBirthDate.setText(cursor.getString(5));
-                b.generos.setText(cursor.getString(6));
-            } else {
+                b.camponombre.setText(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_NOMBRE)));
+                b.campoapellido.setText(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_APELLIDO)));
+                b.campotelefono.setText(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_TELEFONO)));
+                b.campoedad.setText(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_EDAD)));
+                b.campoestatura.setText(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_ESTATURA)));
+                b.etBirthDate.setText(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_BDAY)));
+                b.generos.setText(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_GENERO)));
+            } else if (cursor.getCount() > 1) {
+                // Si hay múltiples resultados, obtener los datos y enviarlos a la actividad Registros
+                ArrayList<Usuarios> usuariosEncontrados = new ArrayList<>();
+                while (cursor.moveToNext()) {
+                    Usuarios usuario = new Usuarios();
+                    usuario.setId(cursor.getInt(cursor.getColumnIndex(Variables.CAMPO_ID)));
+                    usuario.setNombre(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_NOMBRE)));
+                    usuario.setApellido(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_APELLIDO)));
+                    usuario.setTelefono(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_TELEFONO)));
+                    usuario.setEdad(cursor.getInt(cursor.getColumnIndex(Variables.CAMPO_EDAD)));
+                    usuario.setEstatura(cursor.getInt(cursor.getColumnIndex(Variables.CAMPO_ESTATURA)));
+                    usuario.setBdate(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_BDAY)));
+                    usuario.setGenero(cursor.getString(cursor.getColumnIndex(Variables.CAMPO_GENERO)));
+
+                    usuariosEncontrados.add(usuario);
+                }
+
+                // Iniciar la actividad Registros y pasar la lista de usuarios
+                // En la sección donde inicias la actividad Registros, agrega el apellido al intent
                 Intent reg = new Intent(MainActivity.this, Registros.class);
+                reg.putExtra("apellido", b.campoapellido.getText().toString());
                 startActivity(reg);
-                Toast.makeText(this, "Múltiples resultados encontrados. Realizar acciones adicionales.", Toast.LENGTH_LONG).show();
+
+            } else if (cursor.getCount() == 0) {
+                Toast.makeText(this, "No hay datos disponibles", Toast.LENGTH_LONG).show();
             }
 
             cursor.close();
@@ -235,5 +266,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b.campoestatura.setText("");
         b.generos.setText("");
         db.close();
+    }
+
+    private void limpiarCampos(){
+        b.campoid.setText("");
+        b.camponombre.setText("");
+        b.campoapellido.setText("");
+        b.campotelefono.setText("");
+        b.etBirthDate.setText("");
+        b.campoedad.setText("");
+        b.campoestatura.setText("");
+        b.generos.setText("");
     }
 }
