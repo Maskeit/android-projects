@@ -1,5 +1,5 @@
 package com.maskeit.libreria.Models;
-
+//archivo LibrosModel.java
 import java.io.Serializable;
 
 public class LibrosModel implements Serializable {
@@ -9,6 +9,7 @@ public class LibrosModel implements Serializable {
     public String editorial;
     public Integer paginas;
     public Integer ISBN;
+    public float precio;
 
     public LibrosModel() {
         this.id = id;
@@ -17,6 +18,7 @@ public class LibrosModel implements Serializable {
         this.editorial = editorial;
         this.paginas = paginas;
         this.ISBN = ISBN;
+        this.precio = precio;
     }
 
     public Integer getId() {
@@ -65,5 +67,13 @@ public class LibrosModel implements Serializable {
 
     public void setISBN(Integer ISBN) {
         this.ISBN = ISBN;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 }

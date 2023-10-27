@@ -1,5 +1,5 @@
 package com.maskeit.libreria;
-
+//archivo Libros.java
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.maskeit.libreria.Variables.VariablesLibros;
@@ -29,9 +29,10 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
         b.editar.setOnClickListener(this);
         b.eliminar.setOnClickListener(this);
         b.ver.setOnClickListener(this);
+        b.limpiar.setOnClickListener(this);
 
         //Nos conectamos a la bd
-        conectar = new Conectar(this, VariablesLibros.NOMBRE_BD,null,1);
+        conectar = new Conectar(this, VariablesLibros.NOMBRE_BD, null, 2, VariablesLibros.NOMBRE_TABLA);
     }
 
     @Override
@@ -41,9 +42,10 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
         String paginas = b.campopaginas.getText().toString();
         String editorial = b.campoeditorial.getText().toString();
         String isbn = b.campoisbn.getText().toString();
+        String precio = b.campoprecio.getText().toString();
         //String id = b.campoid.getText().toString();
 
-        boolean b1 = !titulo.isEmpty() || !autor.isEmpty() || !paginas.isEmpty() || !editorial.isEmpty() || !isbn.isEmpty();
+        boolean b1 = !titulo.isEmpty() || !autor.isEmpty() || !paginas.isEmpty() || !editorial.isEmpty() || !isbn.isEmpty() || !precio.isEmpty();
         if(b1) {
             if (v == b.insertar) {
                 insertar();
@@ -57,6 +59,7 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
             startActivity(i);
             Log.d("MainActivity", "Iniciando actividad Lista");
         }
+
 
         //Verificamos que se haya insertado algo para buscar
         if(!titulo.isEmpty() || !autor.isEmpty()){
@@ -93,6 +96,7 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
         valores.put(VariablesLibros.CAMPO_EDITORIAL, b.campoeditorial.getText().toString());
         valores.put(VariablesLibros.CAMPO_PAGINAS, b.campopaginas.getText().toString());
         valores.put(VariablesLibros.CAMPO_ISBN, b.campoisbn.getText().toString());
+        valores.put(VariablesLibros.CAMPO_PRECIO, b.campoprecio.getText().toString());
 
         long id = db.insert(VariablesLibros.NOMBRE_TABLA, VariablesLibros.CAMPO_ID,valores);
         Toast.makeText(this, "id:"+id, Toast.LENGTH_LONG).show();
@@ -101,6 +105,7 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
         b.campoeditorial.setText("");
         b.campoisbn.setText("");
         b.campopaginas.setText("");
+        b.campoprecio.setText("");
         db.close();
     }
 
@@ -115,7 +120,8 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
                 VariablesLibros.CAMPO_AUTOR,
                 VariablesLibros.CAMPO_EDITORIAL,
                 VariablesLibros.CAMPO_ISBN,
-                VariablesLibros.CAMPO_PAGINAS
+                VariablesLibros.CAMPO_PAGINAS,
+                VariablesLibros.CAMPO_PRECIO
         };
 
         try {
@@ -134,6 +140,7 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
             b.campoeditorial.setText(cursor.getString(2));
             b.campoisbn.setText(cursor.getString(3));
             b.campopaginas.setText(cursor.getString(4));
+            b.campoprecio.setText(cursor.getString(5));
             cursor.close();
         } catch (Exception e) {
             Toast.makeText(this,"No hay datos disponibles", Toast.LENGTH_LONG).show();
@@ -142,6 +149,7 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
             b.campoeditorial.setText("");
             b.campoisbn.setText("");
             b.campopaginas.setText("");
+            b.campoprecio.setText("");
             e.printStackTrace();
         }
         bd.close();
@@ -157,6 +165,7 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
         b.campoeditorial.setText("");
         b.campoisbn.setText("");
         b.campopaginas.setText("");
+        b.campoprecio.setText("");
         bd.close();
     }
 
@@ -171,6 +180,7 @@ public class Libros extends AppCompatActivity implements View.OnClickListener{
         valores.put(VariablesLibros.CAMPO_EDITORIAL, b.campoeditorial.getText().toString());
         valores.put(VariablesLibros.CAMPO_PAGINAS, b.campopaginas.getText().toString());
         valores.put(VariablesLibros.CAMPO_ISBN, b.campoisbn.getText().toString());
+        valores.put(VariablesLibros.CAMPO_PRECIO, b.campoprecio.getText().toString());
         bd.update(VariablesLibros.NOMBRE_TABLA, valores,VariablesLibros.CAMPO_AUTOR+"=? OR " + VariablesLibros.CAMPO_TITULO + "=?",  new String[]{parametro1[0], parametro2[0]});
         Toast.makeText(this,"El usuario ha sido actualizado",Toast.LENGTH_LONG).show();
         bd.close();

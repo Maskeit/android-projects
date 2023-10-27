@@ -1,0 +1,32 @@
+db.products.insert(
+[
+    {
+        "name" : "mouse",
+        "description" : "razer mouse",
+        "tags" : ["computers", "gamming"],
+        "quantity" : 14
+    },
+    {
+        "name" : "Monitor",
+        "description" : "Dell",
+        "tags" : ["computers", "gamming"],
+        "quantity" : 34
+    }
+]
+)
+
+{
+    "nombre" : "laptop",
+    "precio" : 900,
+    "active" : true,
+    "create_at" : new Date("03/14/2024"),
+    "somedata" : [1, "objetoAnidado"],
+    "factura":{
+        "name" : "dell",
+        "version" : "xpw",
+        "location" : {
+            "city" : "MX",
+            "adsress" : "undefined"
+        }
+    }
+}

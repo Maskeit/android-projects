@@ -1,0 +1,76 @@
+#Comandos para poder utilizar mongoshell
+
+Se entra con:
+$ mongosh #esto inicia el shell de mongoDB
+
+Para mostrar las bases de datos.
+$ show dbs
+
+# Por default entramos y estamos en la db test
+$ db # ver bd actual
+salida = >test
+
+# para cambiar a una based o collection
+$ use <nombreDB>
+
+# la db se crea hasta que insertamos datos en ella por ejemplo
+$ db.products.insert({<JSON>}) # se inserta el objeto json
+
+# luego podemos mostrar con show dbs
+webstore> show dbs
+/*
+*/
+# y para ver las colecciones podemos verlas con
+webstore>show collections
+
+# para eliminar usamos
+> db.dropDatabase() #estando en la bd que queremos eliminar
+
+# luego de crear otra podemos crear una coleccion de esta forma
+> webstore> db.createCollection("users")
+
+# para borrar una colleccion
+> webstore> db.products.drop()
+
+######################################
+#ahora para hacer una insercion de datos podemos usar el comando
+> webstore> db.products.insert({}) #el cual lleva dentro un objeto json
+#por ejemplo
+{
+    "nombre" : "laptop",
+    "precio" : 900,
+    "active" : true,
+    "create_at" : new Date("03/14/2024"),
+    "somedata" : [1, "objetoAnidado"],
+    "factura":{
+        "name" : "dell",
+        "version" : "xpw",
+        "location" : {
+            "city" : "MX",
+            "adsress" : "undefined"
+        }
+    }
+}
+# Esto lo podemos pegar dentro de los parentesis para insertarlo
+
+
+#nuevamente podemos consultar con show collections y vemos que esta la coleccion "products"
+#con el metodo find() lo buscamos pero con pretty() lo vemos de forma como en un editor
+webstore> db.products.find().pretty()
+[
+  {
+    _id: ObjectId("653b5cafd83acdbf3544c234"),
+    nombre: 'laptop',
+    precio: 900,
+    active: true,
+    create_at: ISODate("2024-03-14T06:00:00.000Z"),
+    somedata: [ 1, 'objetoAnidado' ],
+    factura: {
+      name: 'dell',
+      version: 'xpw',
+      location: { city: 'MX', adsress: 'undefined' }
+    }
+  }
+]
+
+

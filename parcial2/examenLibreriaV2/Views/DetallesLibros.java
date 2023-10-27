@@ -27,6 +27,7 @@ public class DetallesLibros extends AppCompatActivity {
             b.txteditorial.setText(usu.getEditorial().toString());
             b.txtpaginas.setText(usu.getPaginas().toString());
             b.txtisbn.setText(usu.getISBN().toString());
+            b.txtprecio.setText(String.valueOf(usu.getPrecio()));
         }else {
             b.txtid.setText("No hay datos para mostrar.");
         }

@@ -1,5 +1,5 @@
 package com.maskeit.libreria.Views;
-
+//archivo ListaLibros.java
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -30,14 +30,15 @@ public class ListaLibros extends AppCompatActivity implements AdapterView.OnItem
         setContentView(b.getRoot());
         setTitle("Ver LibrosModel");
         //usar "b.lista"
-        mostrar();
-        ArrayAdapter<String> aa =new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, listalibros);
+        mostrar(); // Llena la lista de libros
+        ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, listalibros);
         b.lista.setAdapter(aa);
         b.lista.setOnItemClickListener(this); //con este evento vamos al metodo setOnitemClickListener
     }
 
+
     private void mostrar() {
-        conectar = new Conectar(this, VariablesLibros.NOMBRE_BD, null,1);
+        conectar = new Conectar(this, VariablesLibros.NOMBRE_BD, null, 2, VariablesLibros.NOMBRE_TABLA);
         SQLiteDatabase bd = conectar.getReadableDatabase();
         LibrosModel libro = null;
         datoslibros = new ArrayList<LibrosModel>();
@@ -50,6 +51,7 @@ public class ListaLibros extends AppCompatActivity implements AdapterView.OnItem
             libro.setEditorial(cursor.getString(3));
             libro.setPaginas(cursor.getInt(4));
             libro.setISBN(cursor.getInt(5));
+            libro.setPrecio(cursor.getInt(6));
             datoslibros.add(libro);
         }
         agregarLista();

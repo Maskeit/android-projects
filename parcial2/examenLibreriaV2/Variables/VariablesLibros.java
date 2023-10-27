@@ -1,5 +1,6 @@
 package com.maskeit.libreria.Variables;
 import com.maskeit.libreria.Models.DB;
+//archivo VariablesLibros.java
 public class VariablesLibros {
     public static String NOMBRE_BD = DB.NOMBRE_BD;
     public static final String NOMBRE_TABLA = "libros";
@@ -9,14 +10,17 @@ public class VariablesLibros {
     public static final String CAMPO_EDITORIAL = "editorial";
     public static final String CAMPO_PAGINAS = "paginas";
     public static final String CAMPO_ISBN = "isbn";
+    public static final String CAMPO_PRECIO = "precio";
 
-    public static final String CREAR_TABLA = "CREATE TABLE "+ NOMBRE_TABLA+
-            " ("+CAMPO_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
-            CAMPO_TITULO+" TEXT, "+
-            CAMPO_AUTOR+" TEXT, "+
-            CAMPO_EDITORIAL+" TEXT, "+
-            CAMPO_PAGINAS+" INTEGER, "+
-            CAMPO_ISBN+" INTEGER)";
+    public static final String CREAR_TABLA = "CREATE TABLE " + NOMBRE_TABLA +
+            " (" + CAMPO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            CAMPO_TITULO + " TEXT, " +
+            CAMPO_AUTOR + " TEXT, " +
+            CAMPO_EDITORIAL + " TEXT, " +
+            CAMPO_PAGINAS + " INTEGER, " +
+            CAMPO_ISBN + " INTEGER, " +
+            CAMPO_PRECIO + " FLOAT)";
+
 
     public static final String ELIMINAR_TABLA = "DROP TABLE "+ NOMBRE_TABLA;
 }

@@ -59,4 +59,13 @@
         android:layout_below="@id/txtpaginas"
         android:layout_marginTop="10dp"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Precio"
+        android:id="@+id/txtprecio"
+        android:textSize="20dp"
+        android:layout_below="@id/txtisbn"
+        android:layout_marginTop="10dp"
+        />
 </RelativeLayout>

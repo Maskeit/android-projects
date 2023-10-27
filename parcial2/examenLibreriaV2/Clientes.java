@@ -2,23 +2,20 @@ package com.maskeit.libreria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.maskeit.libreria.Models.DB;
 import com.maskeit.libreria.Variables.VariablesClientes;
-import com.maskeit.libreria.Variables.VariablesLibros;
 import com.maskeit.libreria.Views.ListaClientes;
-import com.maskeit.libreria.Views.ListaLibros;
 import com.maskeit.libreria.databinding.ActivityClientesBinding;
-import com.maskeit.libreria.databinding.ActivityLibrosBinding;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
-public class Clientes extends AppCompatActivity implements View.OnClickListener{
+
+public class Clientes extends AppCompatActivity implements View.OnClickListener {
     ActivityClientesBinding b;
     Conectar conectar;
     Intent i;
@@ -32,7 +29,9 @@ public class Clientes extends AppCompatActivity implements View.OnClickListener{
         b.insertar.setOnClickListener(this);
         b.eliminar.setOnClickListener(this);
         b.ver.setOnClickListener(this);
-        conectar = new Conectar(this, VariablesClientes.NOMBRE_BD,null,1);
+
+        // Nos conectamos a la BD
+        conectar = new Conectar(this, DB.NOMBRE_BD, null, 2, VariablesClientes.NOMBRE_TABLA);
 
     }
 
@@ -42,21 +41,34 @@ public class Clientes extends AppCompatActivity implements View.OnClickListener{
         String rfc = b.camporfc.getText().toString();
         boolean b1 = !nombre.isEmpty() || !rfc.isEmpty();
 
-        if(b1){
+        if (b1) {
             if (v == b.insertar) {
                 insertar();
             }
         } else {
-            Toast.makeText(this,"Ingrese los datos primero", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Ingrese los datos primero", Toast.LENGTH_LONG).show();
         }
 
         if (v == b.ver) {
             i = new Intent(Clientes.this, ListaClientes.class);
             startActivity(i);
-            Log.d("MainActivity", "Iniciando actividad Lista");
+            Log.d("ClientesActivity", "Iniciando actividad ListaClientes");
         }
-        }
+    }
 
+    private void insertar() {
+        SQLiteDatabase db = conectar.getWritableDatabase(); // Nos conectamos a la BD
+        ContentValues valores = new ContentValues();
+        valores.put(VariablesClientes.CAMPO_NOMBRE, b.camponombre.getText().toString());
+        valores.put(VariablesClientes.CAMPO_RFC, b.camporfc.getText().toString());
 
+        long id = db.insert(VariablesClientes.NOMBRE_TABLA, VariablesClientes.CAMPO_ID, valores);
+
+        Toast.makeText(this, "id:" + id, Toast.LENGTH_LONG).show();
+
+        b.camponombre.setText("");
+        b.camporfc.setText("");
+
+        db.close();
     }
 }
